@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f6f7" />
+    <title>Signal / Video Annotation</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="project-meta">
+          <span class="project-label">Project:</span>
+          <strong>Proactive Agent</strong>
+          <span class="save-state"><span class="save-dot"></span><span id="saveState">All changes saved</span></span>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button ghost" id="saveVideoButton" title="保存当前视频标注 JSON" aria-label="保存当前视频标注 JSON"><span aria-hidden="true">↑</span><span>Save video JSON</span></button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="sidebar left-sidebar" aria-label="视频列表">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">MEDIA LIBRARY</p>
+              <h1>Videos <span id="videoCount">0</span></h1>
+            </div>
+            <div class="video-picker-actions">
+              <label class="square-button" title="添加视频文件" aria-label="添加视频文件">
+                <span aria-hidden="true">＋</span>
+                <input id="videoInput" type="file" accept="video/*" multiple hidden />
+              </label>
+              <label class="square-button" title="选择视频文件夹" aria-label="选择视频文件夹">
+                <span aria-hidden="true">▦</span>
+                <input id="videoFolderInput" type="file" accept="video/*" webkitdirectory directory multiple hidden />
+              </label>
+            </div>
+          </div>
+          <div class="video-list" id="videoList"></div>
+          <div class="sidebar-footnote"><span class="tiny-play" aria-hidden="true">▶</span> MP4 workspace</div>
+        </aside>
+
+        <section class="main-column" aria-label="视频标注工作区">
+          <div class="video-stage">
+            <video id="videoPlayer" preload="metadata" controls playsinline>
+              你的浏览器不支持视频播放。
+            </video>
+            <div class="video-overlay" id="videoOverlay">
+              <span class="overlay-label">READY TO ANNOTATE</span>
+              <span class="overlay-time" id="overlayTime">00:00</span>
+            </div>
+          </div>
+
+          <section class="annotation-section">
+            <div class="ruler-wrap">
+              <div class="ruler-spacer"></div>
+              <div class="ruler" id="timeRuler"></div>
+            </div>
+            <div id="userTimelines" class="user-timelines"></div>
+            <div id="emptyTimeline" class="empty-timeline" hidden>No users</div>
+          </section>
+
+        </section>
+
+        <aside class="sidebar right-sidebar" aria-label="用户和响应范围">
+          <section class="side-description-section">
+            <div class="section-title-row">
+              <div><p class="eyebrow">USER REQUIREMENT</p></div>
+              <span class="character-count" id="descriptionCount">0 / 240</span>
+            </div>
+            <textarea id="descriptionInput" maxlength="240" rows="3" placeholder="Describe the user's requirement…"></textarea>
+          </section>
+          <section class="user-picker side-user-picker">
+            <div class="users-header">
+              <button class="users-toggle" id="toggleUsersButton" type="button" aria-expanded="false" aria-controls="usersContent"><span class="eyebrow">USERS</span><span class="collapse-chevron" aria-hidden="true">⌄</span></button>
+              <button class="mini-add" id="addUserButton" type="button" title="添加 user" aria-label="添加 user">＋</button>
+            </div>
+            <div class="users-content" id="usersContent" hidden>
+              <div class="user-list" id="userList"></div>
+              <div class="add-user-form" id="addUserForm" hidden><input id="newUserInput" maxlength="24" placeholder="User name" /><button id="confirmAddUser" title="确认添加" aria-label="确认添加">↗</button></div>
+            </div>
+          </section>
+          <section class="response-editor" id="responseEditor" hidden>
+            <div class="editor-topline">
+              <div>
+                <h3 id="editorTitle">Response Range</h3>
+              </div>
+              <button class="close-button" id="cancelEditorButton" title="取消" aria-label="取消">×</button>
+            </div>
+            <div class="range-readout">
+              <label class="range-field"><span>Start (s)</span><input id="editorStartInput" type="number" min="0" step="1" inputmode="numeric" /></label>
+              <span class="range-line"></span>
+              <label class="range-field"><span>End (s)</span><input id="editorEndInput" type="number" min="1" step="1" inputmode="numeric" /></label>
+              <span class="range-duration" id="editorDuration">0.0s</span>
+            </div>
+            <div class="mode-switch" role="group" aria-label="响应类型">
+              <button class="mode-option active" data-mode="non-personalize"><span class="mode-dot coral"></span><span><strong>Non-personalize</strong><small>Apply to every user</small></span></button>
+              <button class="mode-option" data-mode="personalize"><span class="mode-dot teal"></span><span><strong>Personalize</strong><small>Only one user's response</small></span></button>
+            </div>
+            <div class="editor-fields">
+              <label class="field-label" id="personalizedUserField" hidden>
+                <span>User</span>
+                <select id="responseUserSelect"></select>
+              </label>
+              <label class="field-label field-grow">
+                <span>Response content</span>
+                <textarea id="responseTextInput" maxlength="320" rows="2" placeholder="Describe the response for this moment…"></textarea>
+              </label>
+            </div>
+            <div class="editor-actions">
+              <span class="editor-validation" id="editorValidation"></span>
+              <button class="delete-response-button" id="deleteResponseButton" type="button">Delete response</button>
+              <button class="save-response-button" id="saveResponseButton">Save response <span aria-hidden="true">↗</span></button>
+            </div>
+          </section>
+          <div class="right-sidebar-footer"><span>JSON</span><span class="footer-status">Per-video annotations</span></div>
+        </aside>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

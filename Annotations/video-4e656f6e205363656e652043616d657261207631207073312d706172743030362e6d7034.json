@@ -1,0 +1,24 @@
+{
+  "id": "video-4e656f6e205363656e652043616d657261207631207073312d706172743030362e6d7034",
+  "name": "Neon Scene Camera v1 ps1-part006.mp4",
+  "description": "",
+  "responses": [
+    {
+      "id": "response-1788686916356",
+      "start": 205,
+      "end": 231,
+      "mode": "non-personalize",
+      "userId": null,
+      "text": "It's close to finish, don't exercise too much."
+    }
+  ],
+  "users": [
+    {
+      "id": "user-alex",
+      "name": "Alex",
+      "profile": "Master",
+      "color": "#e46f57"
+    }
+  ],
+  "savedAt": "2026-09-06T09:28:38.484Z"
+}

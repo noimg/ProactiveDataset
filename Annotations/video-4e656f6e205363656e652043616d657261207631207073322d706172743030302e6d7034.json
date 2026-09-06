@@ -1,0 +1,24 @@
+{
+  "id": "video-4e656f6e205363656e652043616d657261207631207073322d706172743030302e6d7034",
+  "name": "Neon Scene Camera v1 ps2-part000.mp4",
+  "description": "I'm going to the library near the school gate.",
+  "responses": [
+    {
+      "id": "response-1788685575033",
+      "start": 260,
+      "end": 266,
+      "mode": "non-personalize",
+      "userId": null,
+      "text": "The school gate appears, prepare to get off the bus."
+    }
+  ],
+  "users": [
+    {
+      "id": "user-alex",
+      "name": "Alex",
+      "profile": "Master",
+      "color": "#e46f57"
+    }
+  ],
+  "savedAt": "2026-09-06T09:06:35.853Z"
+}

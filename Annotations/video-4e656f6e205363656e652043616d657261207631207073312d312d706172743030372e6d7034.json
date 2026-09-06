@@ -1,0 +1,32 @@
+{
+  "id": "video-4e656f6e205363656e652043616d657261207631207073312d312d706172743030372e6d7034",
+  "name": "Neon Scene Camera v1 ps1-1-part007.mp4",
+  "description": "Going to print my notes off the laptop, then sort through these papers.",
+  "responses": [
+    {
+      "id": "response-1788684058613",
+      "start": 10,
+      "end": 104,
+      "mode": "non-personalize",
+      "userId": null,
+      "text": "Don't forget to print your notes before you start."
+    },
+    {
+      "id": "response-1788684401929",
+      "start": 168,
+      "end": 175,
+      "mode": "non-personalize",
+      "userId": null,
+      "text": "Don't forget to sort the papers."
+    }
+  ],
+  "users": [
+    {
+      "id": "user-alex",
+      "name": "Alex",
+      "profile": "Master",
+      "color": "#e46f57"
+    }
+  ],
+  "savedAt": "2026-09-06T08:47:32.819Z"
+}

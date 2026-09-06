@@ -1,0 +1,24 @@
+{
+  "id": "video-4e656f6e205363656e652043616d657261207631207073312d312d706172743030352e6d7034",
+  "name": "Neon Scene Camera v1 ps1-1-part005.mp4",
+  "description": "I'm going to pick up a package and then head back to the dormitory.",
+  "responses": [
+    {
+      "id": "response-1788683429500",
+      "start": 177,
+      "end": 209,
+      "mode": "non-personalize",
+      "userId": null,
+      "text": "You've arrived at the courier station, remember to pick up your package."
+    }
+  ],
+  "users": [
+    {
+      "id": "user-alex",
+      "name": "Alex",
+      "profile": "Master",
+      "color": "#e46f57"
+    }
+  ],
+  "savedAt": "2026-09-06T08:31:44.190Z"
+}
