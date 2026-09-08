@@ -1,0 +1,24 @@
+{
+  "id": "video-4e656f6e5363656e654672692d706172743030302e6d7034",
+  "name": "NeonSceneFri-part000.mp4",
+  "description": "I'm going to host a 3-minute talk in the meeting room.",
+  "responses": [
+    {
+      "id": "response-1788787807187",
+      "start": 66,
+      "end": 72,
+      "mode": "non-personalize",
+      "userId": null,
+      "text": "Keep your phone mute."
+    }
+  ],
+  "users": [
+    {
+      "id": "user-alex",
+      "name": "Alex",
+      "profile": "Master",
+      "color": "#e46f57"
+    }
+  ],
+  "savedAt": "2026-09-07T13:31:23.162Z"
+}

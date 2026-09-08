@@ -137,6 +137,38 @@ function renderUserList() {
   });
 }
 
+function renderResponseList() {
+  const list = $("#responseList");
+  const responses = [...(currentVideo()?.responses || [])].sort((a, b) => a.start - b.start || a.end - b.end);
+  list.innerHTML = "";
+  $("#responseCount").textContent = responses.length;
+  if (!responses.length) {
+    const empty = document.createElement("p");
+    empty.className = "response-list-empty";
+    empty.textContent = "No responses yet";
+    list.appendChild(empty);
+    return;
+  }
+  responses.forEach((response) => {
+    const item = document.createElement("button");
+    item.type = "button";
+    item.className = `response-list-item${response.id === state.selectedResponseId ? " active" : ""}`;
+    const user = response.mode === "personalize" ? state.users.find((candidate) => candidate.id === response.userId) : null;
+    const color = user?.color || (response.mode === "personalize" ? "#2d8c8c" : "#e46f57");
+    const scope = response.mode === "personalize" ? (user?.name || "Personal") : "All users";
+    item.title = `${formatTime(response.start)} – ${formatTime(response.end)} · ${response.text || scope}`;
+    item.innerHTML = `<span class="response-list-dot" style="background:${color}"></span><span class="response-list-copy"><span class="response-list-title">${escapeHtml(response.text || (response.mode === "personalize" ? "Personal response" : "Shared response"))}</span><span class="response-list-meta">${escapeHtml(scope)}</span></span><span class="response-list-time">${formatTime(response.start)}</span>`;
+    item.addEventListener("click", () => {
+      videoEl.currentTime = response.start;
+      state.selectedResponseId = response.id;
+      openEditor(response);
+      renderResponseList();
+      renderUserTimelines();
+    });
+    list.appendChild(item);
+  });
+}
+
 function deleteUser(userId) {
   const user = state.users.find((item) => item.id === userId);
   if (!user) return;
@@ -277,6 +309,7 @@ function renderUserTimelines() {
 function renderAll() {
   renderVideoList();
   renderUserList();
+  renderResponseList();
   renderRuler();
   renderUserTimelines();
   updatePlayhead();
