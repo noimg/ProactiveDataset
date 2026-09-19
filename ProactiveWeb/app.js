@@ -1,22 +1,21 @@
-const FALLBACK_VIDEO = {
-  id: "video-neon",
-  name: "Neon v1 ps1.mp4",
-  relativePath: "Neon v1 ps1.mp4",
-  src: "/Videos/Neon%20v1%20ps1.mp4",
-  duration: 0,
-  description: "",
-  responses: [],
-  isDefault: true
-};
-
 const state = {
   users: [
-    { id: "user-alex", name: "Alex", profile: "", color: "#e46f57" },
-    { id: "user-maya", name: "Maya", profile: "", color: "#2d8c8c" }
+    {
+      id: "user-james",
+      name: "James",
+      profile: "Likes frequent reminders and proactive nudges. Responds well to strong, direct, urgent language. Wants clear instructions, repeated prompts, and explicit calls to action to stay on track.",
+      color: "#e46f57"
+    },
+    {
+      id: "user-mary",
+      name: "Mary",
+      profile: "Dislikes frequent reminders and interruptions. Prefers minimal, gentle, respectful prompts. Responds better to calm, supportive language and soft suggestions, with control over when to engage.",
+      color: "#2d8c8c"
+    }
   ],
-  selectedUserId: "user-alex",
-  videos: [{ ...FALLBACK_VIDEO }],
-  currentVideoId: FALLBACK_VIDEO.id,
+  selectedUserId: "user-james",
+  videos: [],
+  currentVideoId: null,
   selectedResponseId: null,
   editor: null,
   draft: null,
@@ -668,7 +667,6 @@ async function loadDefaultVideos() {
     renderAll();
     if (!selected) showToast("No videos found in ../Videos");
   } catch (error) {
-    // Keep the built-in sample so the page remains usable on static hosting.
     showToast("Default video list unavailable; use the folder button");
   }
 }

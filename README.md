@@ -8,20 +8,14 @@
 ProactiveDataset/
 ├── README.md                    # 项目结构说明
 ├── split_videos.sh              # 使用 FFmpeg 将原始视频切分为 5 分钟片段
-├── Videos-origin/               # 未切分的原始视频（当前共 5 个）
-│   ├── Neon Scene Camera v1 ps1-1.mp4
-│   ├── Neon Scene Camera v1 ps1.mp4
-│   ├── Neon Scene Camera v1 ps2.mp4
-│   ├── Neon Scene Camera v1 ps3.mp4
-│   └── NeonSceneFri.mp4
+├── Videos-origin/               # 未切分的原始视频
+│   ├── 20260919-Eric-1.mp4
+│   └── 20260919-Eric-2.mp4
 ├── Videos/                      # 切分后供标注使用的视频片段
-│   ├── Neon Scene Camera v1 ps1-1-part000.mp4
-│   ├── Neon Scene Camera v1 ps1-1-part001.mp4
-│   ├── ...
-│   ├── Neon Scene Camera v1 ps2-part019.mp4
-│   └── NeonSceneFri-part001.mp4
+│   ├── 20260919-Eric-1-part000.mp4
+│   └── 20260919-Eric-2-part001.mp4
 ├── Annotations/                 # 以视频为单位保存的 JSON 标注文件
-│   ├── video-<编码后的视频文件名>.json
+│   ├── video-<十六进制编码后的视频文件名>.json
 │   └── ...
 └── ProactiveWeb/                # 视频标注网页应用
     ├── README.md                # 标注工具的使用说明

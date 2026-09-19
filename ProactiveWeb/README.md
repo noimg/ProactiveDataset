@@ -64,9 +64,9 @@ node server.js --videos /path/to/videos
 │   ├── package.json     # npm start 启动配置
 │   └── README.md        # 使用说明
 ├── Videos/
-│   └── Neon v1 ps1.mp4 # 默认测试视频及其他视频资源
+│   └── 20260919-Eric-1.mp4 # 切分后的视频片段
 └── Annotations/         # 点击 Export JSON 后生成的 user 标注文件
-    ├── Alex.json
+    ├── video-<...>.json
     └── ...
 ```
 
