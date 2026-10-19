@@ -57,11 +57,14 @@ function safeFileName(value) {
 }
 
 async function readJson(request) {
-  let body = "";
+  const chunks = [];
+  let size = 0;
   for await (const chunk of request) {
-    body += chunk;
-    if (Buffer.byteLength(body) > MAX_BODY_SIZE) throw new Error("Request body is too large");
+    size += chunk.length;
+    if (size > MAX_BODY_SIZE) throw new Error("Request body is too large");
+    chunks.push(chunk);
   }
+  const body = Buffer.concat(chunks).toString("utf8");
   return JSON.parse(body || "{}");
 }
 
